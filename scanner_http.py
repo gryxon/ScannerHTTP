@@ -1,0 +1,2 @@
+class ScannerHttp(object):
+    pass
