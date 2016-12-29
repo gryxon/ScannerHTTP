@@ -8,9 +8,9 @@ class OtherHttpMethodModule(object):
         self._path_dict = path_to_link_dict
 
     def _create_response_array(self, req, link):
-        if self.result[req[1] + "links"] is None:
-            self.result[req[1] + "links"] = []
-        self.result[req[1] + "links"].append(link)
+        if self._result[req[1] + "links"] is None:
+            self._result[req[1] + "links"] = []
+        self._result[req[1] + "links"].append(link)
 
     def scan(self, main_url):
         with open(self._path_dict) as url_dict:
