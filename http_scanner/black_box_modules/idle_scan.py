@@ -52,9 +52,9 @@ class BotRecognitionModule(object):
         a = self.simple_scan('137.74.193.103', 80)
         b = self.idle_scan('168.192.1.109', '137.74.193.103', 80) #to ip bota to do ustalenia
 
-        if a == True and b == False:
+        if a and !b:
             self.result = "IP Bota filtrowane"
-        elif a == True and b == True:
+        elif a and b:
             self.result = "IP Bota niefiltrowane"
         else:
             self.result = "Ciezko stwierdzic"
@@ -70,6 +70,3 @@ if __name__ == '__main__':
     module = BotRecognitionModule()
     module.scan()
     print module.get_result()
-
-
-
