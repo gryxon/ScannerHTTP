@@ -7,8 +7,8 @@ from scapy.layers.inet import IP, TCP
 
 class BotRecognitionModule(object):
 
-    def __init__(self):
-        self.result= {}
+    def __init__(self):#192.168.0.59
+        self.result = {}
         self.id_mod = 'bot'
 
     def idle_scan(self, zombie, target, port):
@@ -36,7 +36,6 @@ class BotRecognitionModule(object):
         else:
             #print '[+] Port %d : open' % port
             return True
-
 
     def simple_scan(self, target, port):
         s = socket.socket(2, 1)

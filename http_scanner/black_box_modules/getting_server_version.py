@@ -2,6 +2,7 @@ import platform
 import requests
 import json
 
+
 class GetServerVersionModule(object):
     def __init__(self, proxies=None):
         self._result = {}
