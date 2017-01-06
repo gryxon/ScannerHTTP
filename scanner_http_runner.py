@@ -44,7 +44,6 @@ def get_parsed_args():
                         help="Find hidden files with brute force")
     parser.add_argument("--bot", action="store_true",
                         help="Check if server filters ip of zombie host")
-                        help="Scan of version http server and OS of machine")
     parser.add_argument("-pc", "--permission_check", action="store_true",
                         help="BLABLABLA")
     parser.add_argument("-c", "--check_config_files", action="store_true",
