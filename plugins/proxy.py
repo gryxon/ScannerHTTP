@@ -1,5 +1,11 @@
-import httplib
-c = httplib.HTTPConnection('183.61.236.53:3128')
-# Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
-headers = { 'Connection': 'Keep-Alive', 'User-Agent': 'Mozilla/5.00 (Nikto/2.1.5) (Evasions:None) (Test:Port Check)'}
-c.request('HEAD', 'http://137.74.193.103:80/', '', headers)
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+party_packet = 'HEAD http://137.74.193.103:80/ HTTP/1.1\n' + \
+       'Connection: Keep-Alive\n' + \
+       'User-Agent: Mozilla/5.00 (Nikto/2.1.5) (Evasions:None) (Test:Port Check)\n' + \
+       'Host: 137.74.193.103\n\n'
+
+s.connect(('183.61.236.53', 3128))
+s.send(party_packet)
