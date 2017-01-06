@@ -5,8 +5,7 @@ class PermissionCheck(object):
     def __init__(self, server):
         self.result = {}
         self.id_mod = 'permission'
-        self.paths = ['/etc/' + server + '/' + server + '.conf', '/etc/' + server + '/sites-available/'] \
-            if server.lower() != 'windows' else ['C:\\']
+        self.paths = ['/etc/' + server + '/' + server + '.conf', '/etc/' + server + '/sites-available/']
 
     def scan(self):
         for p in self.paths:
