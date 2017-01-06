@@ -61,9 +61,9 @@ class SlowlorisModule(object):
             r = requests.get("http://"+ip_address+":"+str(port),
                              timeout=5.000)
         except:
-            self._result["dos_result"] = "Attacked successful!"
+            self._result["dos_result"] = "Attack was successful!"
         if "dos_result" not in self._result.keys():
-            self._result["dos_result"] = "Attacked failed!"
+            self._result["dos_result"] = "Attack failed!"
 
     def get_id(self):
             return self._id_mod

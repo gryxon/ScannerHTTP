@@ -12,30 +12,30 @@ def get_parsed_args():
     parser = argparse.ArgumentParser("Argsparser for Http scanner.")
     parser.add_argument("--url", help="Url of server", default="localhost",
                         type=str)
-    parser.add_argument("--ip", help="Url of server", default="localhost",
+    parser.add_argument("--ip", help="IP Address of scanned server", default="localhost",
                         type=str)
-    parser.add_argument("--port", help="Url of server", default=80,
+    parser.add_argument("--port", help="Scanned server's port number", default=80,
                         type=int)
-    parser.add_argument("--ip_bot", help="Url of server", default="localhost",
+    parser.add_argument("--ip_bot", help="IP Address of zombie host", default="localhost",
                         type=str)
-    parser.add_argument("--dict_path", help="Url of server",
+    parser.add_argument("--dict_path", help="Path to  url dictionary",
                         default="dict_path", type=str)
     parser.add_argument("-os", "--check_server_os", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Scan of http server version and OS of machine")
     parser.add_argument("-uc", "--update_content", action="store_true",
-                        help="")
+                        help="Check possibility of other http requests")
     parser.add_argument("-ssl", action="store_true",
-                        help="")
+                        help="Encrypt requests with ssl")
     parser.add_argument("-up", "--use_proxy", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Scan server through proxy")
     parser.add_argument("-pd", "--perform_dos", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Check server vulnerability for DoS attack")
     parser.add_argument("-f", "--find_hidden_files", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Find hidden files with url dictionary")
     parser.add_argument("-b", "--perform_brute", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Find hidden files with brute force")
     parser.add_argument("--bot", action="store_true",
-                        help="Scan of version http server and OS of machine")
+                        help="Check if server filters ip of zombie host")
     return parser.parse_args()
 
 

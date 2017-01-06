@@ -9,7 +9,7 @@ class OsRecognitionModule(object):
         self.result["os-name"] = platform.system()
         self.result["os-version"] = platform.release()
 
-    def get_id():
+    def get_id(self):
         return self._id_mod
 
     def get_result(self):
