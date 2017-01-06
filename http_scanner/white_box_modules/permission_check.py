@@ -10,15 +10,18 @@ class PermissionCheck(object):
                       '/etc/apache2/sites-available/default-ssl.conf']
 
 
-    def check_all(self):
+    def scan(self):
         for p in self.paths:
             self.check_permission(p)
+
+    def get_id(self):
+        return self.id_mod
 
     def check_permission(self, path):
 
         if os.path.isfile(path):
             st = os.stat(path)
-            print oct(st.st_mode)[-3:][2]
+            # print oct(st.st_mode)[-3:][2]
             if int(oct(st.st_mode)[-3:][2]) != 4:
                 self.result[path] = 'Niebezpieczne uprawnienia dostepu!!!'
             else:
