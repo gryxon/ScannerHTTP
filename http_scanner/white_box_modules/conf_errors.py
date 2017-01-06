@@ -25,14 +25,14 @@ class ConfErrors(object):
         for i in self.a.splitlines():
 
             if "<Directory" in i:
-                in_tag = True
+                self.in_tag = True
                 continue
 
             if "</Directory" in i:
-                in_tag = False
+                self.in_tag = False
                 continue
 
-            if in_tag:
+            if self.in_tag:
                 s = i.lower()
                 self.c.append(s)
 
@@ -42,12 +42,8 @@ class ConfErrors(object):
             else:
                 self.result = "Configuration seems fine"
 
+    def get_id(self):
+        return self.id_mod
+
     def get_result(self):
         return self.result
-
-
-if __name__ == '__main__':
-
-    module = conf_errors()
-    module.find_errors()
-    print module.get_result()
