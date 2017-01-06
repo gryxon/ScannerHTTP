@@ -1,16 +1,16 @@
-class conf_errors(object):
+class ConfErrors(object):
 
-    def __init__(self):
+    def __init__(self, conf_path):
         self.a = ""
         self.b = 0
         self.in_tag = False
         self.c = []
         self.result = {}
         self.id_mod = 'conf_err'
+        self._conf_path = conf_path
 
-
-    def find_errors(self):
-        f = open('/etc/apache2/apache2.conf', 'r')
+    def scan(self):
+        f = open(self._conf_path, 'r')
         for line in f.readlines():
             if self.b%2 == 0:
                 if line[0] == ('<'):
@@ -51,8 +51,3 @@ if __name__ == '__main__':
     module = conf_errors()
     module.find_errors()
     print module.get_result()
-
-
-
-
-
