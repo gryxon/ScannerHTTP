@@ -1,5 +1,4 @@
 import json
-from black_box_modules.update_content import OtherHttpMethodModule
 
 
 class WrapperBlackScannerHttp(object):
