@@ -16,7 +16,7 @@ def get_parsed_args():
     parser = argparse.ArgumentParser("Argsparser for Http scanner.")
     parser.add_argument("--url", help="Url of server", default="localhost",
                         type=str)
-    parser.add_argument("--conf_path", help="Url of server", default="conf",
+    parser.add_argument("--conf_path", help="Path to server configuration file", default="conf",
                         type=str)
     parser.add_argument("--ip", help="IP Address of scanned server", default="localhost",
                         type=str)
@@ -45,11 +45,11 @@ def get_parsed_args():
     parser.add_argument("--bot", action="store_true",
                         help="Check if server filters ip of zombie host")
     parser.add_argument("-pc", "--permission_check", action="store_true",
-                        help="BLABLABLA")
+                        help="Check access permission for important files")
     parser.add_argument("-c", "--check_config_files", action="store_true",
-                        help="BLABLABLA")
+                        help="Check dangerous server configuration")
     parser.add_argument("-osw", "--osw_server_checking", action="store_true",
-                        help="BLABLABLA")
+                        help="Check OS version")
     return parser.parse_args()
 
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     if args.osw_server_checking:
         wrapper.add_module(OsRecognitionModule())
     if args.check_config_files:
-        wrapper.add_module(ConfErrors(conf_path))
+        wrapper.add_module(ConfErrors(args.conf_path))
 
     d = (ip, int(port), ip_bot)
     if not args.white_scan:
