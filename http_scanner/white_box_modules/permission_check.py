@@ -23,12 +23,12 @@ class PermissionCheck(object):
             st = os.stat(path)
             # print oct(st.st_mode)[-3:][2]
             if int(oct(st.st_mode)[-3:][2]) != 4:
-                self.result[path] = 'Niebezpieczne uprawnienia dostepu!!!'
+                self.result[path] = 'Dangerous file permissions!!!'
             else:
-                self.result[path] = "Wszystko spoko"
+                self.result[path] = "Everything seems OK"
 
         else:
-            self.result[path] = "Nie ma takiego pliku"
+            self.result[path] = "No such file"
 
     def get_result(self):
         return self.result
