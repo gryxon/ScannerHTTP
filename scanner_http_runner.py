@@ -16,6 +16,8 @@ def get_parsed_args():
     parser = argparse.ArgumentParser("Argsparser for Http scanner.")
     parser.add_argument("--url", help="Url of server", default="localhost",
                         type=str)
+    parser.add_argument("--server", help="Server name", default="apache2",
+                        type=str)
     parser.add_argument("--conf_path", help="Path to server configuration file", default="conf",
                         type=str)
     parser.add_argument("--ip", help="IP Address of scanned server", default="localhost",
@@ -79,7 +81,7 @@ if __name__ == "__main__":
     if args.find_hidden_files:
         wrapper.add_module(DictAttackModule(dict_name=dict_path))
     if args.permission_check:
-        wrapper.add_module(PermissionCheck())
+        wrapper.add_module(PermissionCheck(args.server))
     if args.osw_server_checking:
         wrapper.add_module(OsRecognitionModule())
     if args.check_config_files:

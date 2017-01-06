@@ -5,9 +5,14 @@ class PermissionCheck(object):
     def __init__(self, server):
         self.result = {}
         self.id_mod = 'permission'
-        self.paths = ['/etc/' + server + '/' + server + '.conf', '/etc/' + server + '/sites-available/']
+        if server == 'windows':
+            self.paths = [r'C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config', r'C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\web.config']
+        else:
+            self.paths = ['/etc/' + server + '/' + server + '.conf', '/etc/' + server + '/sites-available/']
+
 
     def scan(self):
+
         for p in self.paths:
             self.check_permission(p)
 
