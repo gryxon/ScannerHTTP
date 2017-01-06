@@ -3,12 +3,13 @@ import requests
 import json
 
 class GetServerVersionModule(object):
-    def __init__(self):
+    def __init__(self, proxies=None):
         self._result = {}
         self._id_mod = "os"
+        self._proxies = proxies
 
     def scan(self, main_url):
-        r = requests.head(main_url)
+        r = requests.head(main_url, proxies=self._proxies)
         self._result["server"] = r.headers.get("Server")
 
     def get_id(self):

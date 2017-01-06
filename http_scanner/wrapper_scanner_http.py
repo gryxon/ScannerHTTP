@@ -19,9 +19,13 @@ class WrapperBlackScannerHttp(object):
     def add_module(self, mod):
         self._modules.append(mod)
 
-    def scan(self, link):
+    def scan(self, link, data=None):
         for module in self._modules:
-            module.scan(link)
+            if module.get_id() == "bot" or module.get_id() == "dos":
+                print(data[1])
+                module.scan(data)
+            else:
+                module.scan(link)
             self._result[module.get_id()] = module.get_result()
 
     def get_result(self):

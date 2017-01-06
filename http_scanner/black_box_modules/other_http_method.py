@@ -2,10 +2,11 @@ import platform
 import requests
 
 class OtherHttpMethodModule(object):
-    def __init__(self, path_to_link_dict="url_dict"):
+    def __init__(self, path_to_link_dict="url_dict", proxies=None):
         self._result = {}
         self._id_mod = "uc"
         self._path_dict = path_to_link_dict
+        self._proxies = proxies
 
     def _create_response_array(self, req, link):
         if self._result[req[1] + "links"] is None:
@@ -16,9 +17,12 @@ class OtherHttpMethodModule(object):
         with open(self._path_dict) as url_dict:
             lines = url_dict.readlines()
             for line in lines:
-                put_r = requests.put(main_url + line, data = {})
-                delete_r = requests.delete(main_url + line)
-                trace_r = requests.request("TRACE", main_url + line)
+                put_r = requests.put(main_url + line, data = {},
+                                     proxies=self._proxies)
+                delete_r = requests.delete(main_url + line,
+                                           proxies=self._proxies)
+                trace_r = requests.request("TRACE", main_url + line,
+                                           proxies=self._proxies)
 
                 req_arr = [(put_r, "put"), (delete_r, "delete"),
                            (trace_r, "trace")]
