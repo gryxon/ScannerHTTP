@@ -9,7 +9,7 @@ class OtherHttpMethodModule(object):
         self._proxies = proxies
 
     def _create_response_array(self, req, link):
-        if self._result[req[1] + "links"] is None:
+        if req[1] + "links" not in self._result.keys():
             self._result[req[1] + "links"] = []
         self._result[req[1] + "links"].append(link)
 
@@ -17,11 +17,11 @@ class OtherHttpMethodModule(object):
         with open(self._path_dict) as url_dict:
             lines = url_dict.readlines()
             for line in lines:
-                put_r = requests.put(main_url + line, data = {},
+                put_r = requests.put(main_url + line[:-1], data = {},
                                      proxies=self._proxies)
-                delete_r = requests.delete(main_url + line,
+                delete_r = requests.delete(main_url + line[:-1],
                                            proxies=self._proxies)
-                trace_r = requests.request("TRACE", main_url + line,
+                trace_r = requests.request("TRACE", main_url + line[:-1],
                                            proxies=self._proxies)
 
                 req_arr = [(put_r, "put"), (delete_r, "delete"),
@@ -29,7 +29,7 @@ class OtherHttpMethodModule(object):
 
                 for req in req_arr:
                     if req[0].status_code == 200:
-                        self._create_response_array(req, main_url + line)
+                        self._create_response_array(req, main_url + line[:-1])
 
 
     def get_id(self):
