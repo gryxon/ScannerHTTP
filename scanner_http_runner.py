@@ -29,7 +29,7 @@ def get_parsed_args():
     parser.add_argument("-os", "--check_server_os", action="store_true",
                         help="Scan of http server version and OS of machine")
     parser.add_argument("-uc", "--update_content", action="store_true",
-                        help="Check possibility of other http requests"))
+                        help="Check possibility of other http requests")
     parser.add_argument("-w", "--white_scan", action="store_true",
                         help="")
     parser.add_argument("-ssl", action="store_true",
