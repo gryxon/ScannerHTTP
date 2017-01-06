@@ -1,15 +1,14 @@
 import os
 
-class PermissionCheck(object):
 
+class PermissionCheck(object):
     def __init__(self):
         self.result= {}
         self.id_mod = 'permission'
         self.paths = ['/etc/apache2/apache2.conf',
                       '/etc/apache2/sites-available/000-default.conf',
                       '/etc/apache2/sites-available/default-ssl.conf']
-
-
+    
     def check_all(self):
         for p in self.paths:
             self.check_permission(p)
@@ -30,11 +29,7 @@ class PermissionCheck(object):
     def get_result(self):
         return self.result
 
-
-
-
 if __name__ == '__main__':
-
     module = PermissionCheck()
     module.check_all()
     print module.get_result()
