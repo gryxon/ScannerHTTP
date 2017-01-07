@@ -8,7 +8,7 @@ from http_scanner.black_box_modules.slowloris_module import SlowlorisModule
 from http_scanner.black_box_modules.url_force import ForceAttackModule
 from http_scanner.black_box_modules.url_dict import DictAttackModule
 from http_scanner.black_box_modules.check_ssl import CheckSsl
-from http_scanner.ssl import ssl_scan
+from http_scanner.enable_ssl import ssl_scan
 from http_scanner.white_box_modules.conf_errors import ConfErrors
 from http_scanner.white_box_modules.os_rec import OsRecognitionModule
 from http_scanner.white_box_modules.permission_check import PermissionCheck

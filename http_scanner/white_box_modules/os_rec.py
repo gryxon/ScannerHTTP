@@ -36,8 +36,3 @@ class OsRecognitionModule(object):
         :return: Dict with results.
         """
         return self._result
-
-if __name__ == "__main__":
-    m = OsRecognitionModule()
-    m.scan()
-    print(m.get_result())
