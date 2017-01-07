@@ -7,9 +7,12 @@ from http_scanner.black_box_modules.idle_scan import BotRecognitionModule
 from http_scanner.black_box_modules.slowloris_module import SlowlorisModule
 from http_scanner.black_box_modules.url_force import ForceAttackModule
 from http_scanner.black_box_modules.url_dict import DictAttackModule
+from http_scanner.black_box_modules.check_ssl import CheckSsl
+from http_scanner.ssl import ssl_scan
 from http_scanner.white_box_modules.conf_errors import ConfErrors
 from http_scanner.white_box_modules.os_rec import OsRecognitionModule
 from http_scanner.white_box_modules.permission_check import PermissionCheck
+import requests
 import time
 
 
@@ -48,8 +51,9 @@ def get_parsed_args():
                         help="Check server vulnerability for DoS attack")
     parser.add_argument("-f", "--find_hidden_files", action="store_true",
                         help="Find hidden files with url dictionary")
-    parser.add_argument("-b", "--perform_brute", action="store_true",
-                        help="Find hidden files with brute force")
+    parser.add_argument("-b", "--perform_brute",
+                        help="Find hidden files with brute force", default=None,
+                        type=str)
     parser.add_argument("--bot", action="store_true",
                         help="Check if server filters ip of zombie host")
     parser.add_argument("-pc", "--permission_check", action="store_true",
@@ -58,6 +62,7 @@ def get_parsed_args():
                         help="Check dangerous server configuration")
     parser.add_argument("-osw", "--osw_server_checking", action="store_true",
                         help="Check OS version")
+    parser.add_argument("-https", action="store_true", help="Check if ssl certificate is trusted")
     return parser.parse_args()
 
 
@@ -87,7 +92,9 @@ if __name__ == "__main__":
     if args.perform_dos:
         wrapper.add_module(SlowlorisModule())
     if args.perform_brute:
-        wrapper.add_module(ForceAttackModule(proxies=proxy))
+        brute_attrs = args.perform_brute.split(' ')
+        wrapper.add_module(ForceAttackModule(proxies=proxy, start=int(brute_attrs[0]), stop=int(brute_attrs[1]),
+                                             capital=bool(int(brute_attrs[2]))))
     if args.find_hidden_files:
         wrapper.add_module(DictAttackModule(dict_name=dict_path, proxies=proxy))
     if args.permission_check:
@@ -96,8 +103,17 @@ if __name__ == "__main__":
         wrapper.add_module(OsRecognitionModule())
     if args.check_config_files:
         wrapper.add_module(ConfErrors(args.conf_path))
+    if args.https:
+        wrapper.add_module(CheckSsl())
 
     d = (ip, int(port), ip_bot)
+    if args.ssl:
+        args.url = ssl_scan(args.url)
+        try:
+            requests.get(args.url)
+        except:
+            print "Cannot make an ssl scan, certificate problem, aborting..."
+            exit()
     if not args.white_scan:
         wrapper.scan(args.url, data=d)
     else:

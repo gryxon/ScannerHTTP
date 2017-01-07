@@ -31,7 +31,7 @@ class CheckSsl(object):
         except Exception as e:
             if 'certificate verify failed' in str(e.message):
                 self._result['ssl validation'] = 'bad signed ssl'
-            elif 'unknown protocol' in str(e.message):
+            else:
                 self._result['ssl validation'] = 'no ssl certificate or ssl protocol error'
 
     def get_id(self):
@@ -47,8 +47,3 @@ class CheckSsl(object):
         :return: Dict with results.
         """
         return self._result
-
-if __name__ == '__main__':
-    cs = CheckSsl()
-    cs.scan('137.74.193.103:8080')
-    print cs.get_result()
