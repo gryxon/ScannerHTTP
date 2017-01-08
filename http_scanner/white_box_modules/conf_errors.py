@@ -49,6 +49,7 @@ class ConfErrors(object):
         for i in self.c:
             if ("dav on" or "allow from all") in i:
                 self.result = "Dangerous server configuration!!!"
+                self.result["recomendation"] = "Method like PUT or DELETE should be available only for authorized users!"
             else:
                 self.result = "Configuration seems fine"
 
