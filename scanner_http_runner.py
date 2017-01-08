@@ -119,4 +119,6 @@ if __name__ == "__main__":
     else:
         wrapper.scan()
 
-    print(wrapper.get_result())
+    for key, value in wrapper.get_result().iteritems():
+        print key + ":"
+        print value
