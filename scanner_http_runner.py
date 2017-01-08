@@ -16,6 +16,7 @@ import time
 def get_parsed_args():
     """
     Processing input function.
+
     :return: Processed Args
     """
     parser = argparse.ArgumentParser("Argsparser for Http scanner.")

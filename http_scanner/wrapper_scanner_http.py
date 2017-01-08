@@ -8,6 +8,7 @@ class WrapperBlackScannerHttp(object):
     def __init__(self, id_name="black_scanner"):
         """
         Constructor of our scanner.
+
         :param id_name: Optional argument. Id of scanner.
         """
         self._modules = []
@@ -17,6 +18,7 @@ class WrapperBlackScannerHttp(object):
     def add_module(self, mod):
         """
         Method adds module to wrapper.
+
         :param mod: Added module
         :return: None.
         """
@@ -25,13 +27,14 @@ class WrapperBlackScannerHttp(object):
     def scan(self, link, data=None):
         """
         Scanning method. Every added module scan the website.
+
         :param link: Url of the website
         :param data: Optional parameter to low implement module.
         :return: None.
         """
         for module in self._modules:
             if module.get_id() == "bot" or module.get_id() == "dos":
-                print(data[1])
+                #print(data[1])
                 module.scan(data)
             else:
                 module.scan(link)
@@ -40,6 +43,7 @@ class WrapperBlackScannerHttp(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result
@@ -47,6 +51,7 @@ class WrapperBlackScannerHttp(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._result
@@ -58,6 +63,7 @@ class WrapperWhiteScannerHttp(object):
     def __init__(self, id_name="white_scanner"):
         """
         Constructor of our scanner.
+
         :param id_name: Optional argument. Id of scanner.
         """
         self._modules = []
@@ -67,6 +73,7 @@ class WrapperWhiteScannerHttp(object):
     def add_module(self, mod):
         """
         Method adds module to wrapper.
+
         :param mod: Added module
         :return: None.
         """
@@ -75,6 +82,7 @@ class WrapperWhiteScannerHttp(object):
     def scan(self):
         """
         Scanning method. Every added module scan the website.
+
         :param link: Url of the website
         :param data: Optional parameter to low implement module.
         :return: None.
@@ -86,6 +94,7 @@ class WrapperWhiteScannerHttp(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result
@@ -93,6 +102,7 @@ class WrapperWhiteScannerHttp(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._id_mod

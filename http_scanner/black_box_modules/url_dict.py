@@ -8,6 +8,7 @@ class DictAttackModule(object):
     def __init__(self, dict_name="dict_name", proxies=None):
         """
         Constructor of the class.
+
         :param dict_name: Path to dict.
         :param proxies: Proxy information.
         """
@@ -19,6 +20,7 @@ class DictAttackModule(object):
     def scan(self, main_url):
         """
         Scanning method.
+
         :param main_url: Main url of the scanned website.
         :return:
         """
@@ -55,6 +57,7 @@ class DictAttackModule(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._id_mod
@@ -62,6 +65,7 @@ class DictAttackModule(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result

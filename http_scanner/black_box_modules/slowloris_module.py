@@ -32,9 +32,10 @@ class SlowlorisModule(object):
         self._result = {}
         self._id_mod = "dos"
 
-    def _loris_attack(self, ip_address, port, q):
+    def loris_attack(self, ip_address, port, q):
         """
         Method implements slowloris attack.
+
         :param ip_address: Ip address of server.
         :param port: Port of server.
         :param q: Message queue between process
@@ -71,7 +72,7 @@ class SlowlorisModule(object):
         ip_address = data[0]
         port = data[1]
         q = Queue()
-        Process(target=self._loris_attack,
+        Process(target=self.loris_attack,
                 args=(ip_address, port, q)).start()
         try:
             while(q.empty()):

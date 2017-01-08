@@ -10,6 +10,7 @@ class GetServerVersionModule(object):
     def __init__(self, proxies=None):
         """
         Constructor of class.
+
         :param proxies: Optional parameter for proxy.
         """
         self._result = {}
@@ -19,6 +20,7 @@ class GetServerVersionModule(object):
     def scan(self, main_url):
         """
         Scanning Method.
+
         :param main_url: Main url of scanned website
         :return: None
         """
@@ -28,6 +30,7 @@ class GetServerVersionModule(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._id_mod
@@ -35,6 +38,7 @@ class GetServerVersionModule(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result

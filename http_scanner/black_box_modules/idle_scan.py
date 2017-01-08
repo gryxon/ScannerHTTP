@@ -19,18 +19,16 @@ class BotRecognitionModule(object):
     def idle_scan(self, zombie, target, port):
         """
         Method implements idle scan.
+
         :param zombie: Zombie server.
         :param target: Target server
         :param port: Port
         :return:
         """
-        #print '[*] Scan %s port %d using %s as zombie' % (target, port, zombie)
 
         #pozyskanie IP ID z Bota
         p1 = sr1(IP(dst=zombie)/TCP(sport=12345,dport=(123),flags="SA"),verbose=0)
         initial_id = p1.id
-
-        #print '[+] Zombie initial IP id', initial_id
 
         #Spoofowanie
         p2 = send(IP(dst=target,src=zombie)/TCP(sport=12345,dport=(port),flags="S"),verbose=0)
@@ -39,18 +37,18 @@ class BotRecognitionModule(object):
         p3 = sr1(IP(dst=zombie)/TCP(sport=12345,dport=(123),flags="SA"),verbose=0)
         final_id = p3.id
 
-        #print '[+] Zombie final IP id', final_id
 
         if final_id - initial_id < 2:
-            #print '[+] Port %d : closed/filtered' % port
+
             return False
         else:
-            #print '[+] Port %d : open' % port
+
             return True
 
     def simple_scan(self, target, port):
         """
         Simple scanning.
+
         :param target: Target server.
         :param port: Port
         :return: True if server response else False.
@@ -67,6 +65,7 @@ class BotRecognitionModule(object):
     def scan(self, data):
         """
         Scanning method.
+
         :param data: Data in format: ip_target:port:ip_zombie
         :return: None.
         """
@@ -86,6 +85,7 @@ class BotRecognitionModule(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self.result
@@ -93,6 +93,7 @@ class BotRecognitionModule(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self.id_mod

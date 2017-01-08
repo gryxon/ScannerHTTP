@@ -9,6 +9,7 @@ class ForceAttackModule(object):
     def __init__(self, proxies=None):
         """
         Constructor of the class.
+
         :param proxies: Proxy information.
         """
         self._result = {}
@@ -18,6 +19,7 @@ class ForceAttackModule(object):
     def scan(self, main_url):
         """
         Scanning Method
+
         :param main_url: Main url of the scanned website
         :return: None.
         """
@@ -40,6 +42,7 @@ class ForceAttackModule(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._id_mod
@@ -47,6 +50,7 @@ class ForceAttackModule(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result

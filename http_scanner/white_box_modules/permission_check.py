@@ -8,6 +8,7 @@ class PermissionCheck(object):
     def __init__(self, server):
         """
         Constructor of the class.
+
         :param server: nginx, apache2 or windows string.
         """
         self.result = {}
@@ -20,6 +21,7 @@ class PermissionCheck(object):
     def scan(self):
         """
         Scanning Method
+
         :return: None.
         """
 
@@ -29,6 +31,7 @@ class PermissionCheck(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self.id_mod
@@ -36,6 +39,7 @@ class PermissionCheck(object):
     def check_permission(self, path):
         """
         Method implements checking file permission.
+
         :param path: Path to conf files.
         :return:
         """
@@ -56,6 +60,7 @@ class PermissionCheck(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self.result

@@ -3,6 +3,7 @@ class ConfErrors(object):
     def __init__(self, conf_path):
         """
         Constructor of the class.
+
         :param conf_path: Path to conf file.
         """
         self.a = ""
@@ -16,6 +17,7 @@ class ConfErrors(object):
     def scan(self):
         """
         Scanning method.
+
         :return: None.
         """
         f = open(self._conf_path, 'r')
@@ -53,6 +55,7 @@ class ConfErrors(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self.id_mod
@@ -60,6 +63,7 @@ class ConfErrors(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self.result

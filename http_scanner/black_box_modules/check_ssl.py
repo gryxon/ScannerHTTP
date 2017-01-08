@@ -15,6 +15,7 @@ class CheckSsl(object):
     def scan(self, main_url):
         """
         Scanning Method.
+
         :param main_url: Main url of scanned website.
         :return: None.
         """
