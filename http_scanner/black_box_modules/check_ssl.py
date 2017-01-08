@@ -32,10 +32,10 @@ class CheckSsl(object):
         except Exception as e:
             if 'certificate verify failed' in str(e.message):
                 self._result['ssl validation'] = 'bad signed ssl'
-                self._result['recomendation'] = 'You should sign your cert!'
-            elif 'unknown protocol' in str(e.message):
+                self._result['recomendation'] = 'You should have ssl cert signed by trusted organisation!'
+            else:
                 self._result['ssl validation'] = 'no ssl certificate or ssl protocol error'
-                self._result['recomendation'] = 'You should sign your cert!'
+                self._result['recomendation'] = 'You should enable ssl cert!'
 
     def get_id(self):
         """

@@ -39,10 +39,11 @@ class DictAttackModule(object):
 
         for attacked_line in robots_lines:
             response = requests.get(main_url + attacked_line, proxies=self._proxies)
-            print response.status_code, attacked_line.replace('\n', '')
+            if response.status_code == 200:
+                self._result['recomendation'] = 'Generally, files and folders mentioned in robots should be restricted for unverified user'
 
         if requests.get(main_url + '/phpinfo.php', proxies=self._proxies).status_code == 200:
-            print 'phpinfo.php found!!!'
+            self._result['recomendation'] = 'phpinfo.php found!!! Delete it immidietely from general access'
 
         with open(self._dict_name) as url_dict:
             line = url_dict.readline()
