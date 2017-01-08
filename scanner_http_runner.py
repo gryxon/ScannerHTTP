@@ -3,7 +3,7 @@ from http_scanner.wrapper_scanner_http import WrapperBlackScannerHttp
 from http_scanner.wrapper_scanner_http import WrapperWhiteScannerHttp
 from http_scanner.black_box_modules.getting_server_version import GetServerVersionModule
 from http_scanner.black_box_modules.other_http_method import OtherHttpMethodModule
-#from http_scanner.black_box_modules.idle_scan import BotRecognitionModule
+from http_scanner.black_box_modules.idle_scan import BotRecognitionModule
 from http_scanner.black_box_modules.slowloris_module import SlowlorisModule
 from http_scanner.black_box_modules.url_force import ForceAttackModule
 from http_scanner.black_box_modules.url_dict import DictAttackModule
