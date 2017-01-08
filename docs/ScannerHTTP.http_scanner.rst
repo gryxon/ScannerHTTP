@@ -14,7 +14,7 @@ Submodules
 
 .. toctree::
 
-   ScannerHTTP.http_scanner.ssl
+   ScannerHTTP.http_scanner.enable_ssl
    ScannerHTTP.http_scanner.wrapper_scanner_http
 
 Module contents

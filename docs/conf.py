@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # HTTP-scanner documentation build configuration file, created by
-# sphinx-quickstart on Sun Jan  8 18:06:34 2017.
+# sphinx-quickstart on Sun Jan  8 21:13:56 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -84,7 +84,7 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'classic'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
