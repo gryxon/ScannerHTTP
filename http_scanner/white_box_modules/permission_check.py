@@ -52,10 +52,13 @@ class PermissionCheck(object):
                 self.result["recommendation"] = "Set file persmissions with XX4 format"
             else:
                 self.result[path] = "Everything seems OK"
+        #elif os.path.isdir(path):
+            #os.access(path, os.W_OK)
         elif os.path.isdir(path):
-            os.access(path, os.W_OK)
-            if os.R_OK == 4:
-                self.result[path] = 'Dangerous() folder permissions!!!'
+            st = os.stat(path)
+            #if os.R_OK == 4:
+            if int(oct(st.st_mode)[-3:][2]) != 4:
+                self.result[path] = 'Dangerous(' + oct(st.st_mode)[-3:] + ') folder permissions!!!'
                 self.result["recommendation"] = "Set file persmissions with XX4 format"
         else:
             self.result[path] = "No such file or folder"
