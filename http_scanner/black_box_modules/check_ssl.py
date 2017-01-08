@@ -28,11 +28,14 @@ class CheckSsl(object):
         try:
             requests.get(ssl_url)
             self._result['ssl validation'] = 'trusted ssl'
+            self._result['recomendation'] = 'Everything is alright!'
         except Exception as e:
             if 'certificate verify failed' in str(e.message):
                 self._result['ssl validation'] = 'bad signed ssl'
+                self._result['recomendation'] = 'You should sign your cert!'
             elif 'unknown protocol' in str(e.message):
                 self._result['ssl validation'] = 'no ssl certificate or ssl protocol error'
+                self._result['recomendation'] = 'You should sign your cert!'
 
     def get_id(self):
         """

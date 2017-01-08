@@ -20,6 +20,7 @@ class OsRecognitionModule(object):
         """
         self._result["os-name"] = platform.system()
         self._result["os-version"] = platform.release()
+        self._result["recomendation"] = "Version of OS and HTTP server should be up to date! Check it!"
 
     def get_id(self):
         """
