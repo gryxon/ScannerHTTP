@@ -29,6 +29,7 @@ class DictAttackModule(object):
         robots_urls = False
         robots_lines = []
         if r.status_code == 200:
+            print 'robots.txt found, content added to scan'
             for line in r.text.split('\n'):
                 line = line.lower()
                 if robots_urls and 'disallow' in line:
@@ -41,7 +42,7 @@ class DictAttackModule(object):
             print response.status_code, attacked_line.replace('\n', '')
 
         if requests.get(main_url + '/phpinfo.php', proxies=self._proxies).status_code == 200:
-            print 'Znaleziono phpinfo.php !!!'
+            print 'phpinfo.php found!!!'
 
         with open(self._dict_name) as url_dict:
             line = url_dict.readline()
