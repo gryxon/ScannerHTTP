@@ -12,7 +12,12 @@ from http_scanner.white_box_modules.os_rec import OsRecognitionModule
 from http_scanner.white_box_modules.permission_check import PermissionCheck
 import time
 
+
 def get_parsed_args():
+    """
+    Processing input function.
+    :return: Processed Args
+    """
     parser = argparse.ArgumentParser("Argsparser for Http scanner.")
     parser.add_argument("--url", help="Url of server", default="localhost",
                         type=str)
@@ -68,18 +73,22 @@ if __name__ == "__main__":
     port = args.port
     dict_path = args.dict_path
 
+    proxy = None
+    if args.use_proxy:
+        proxy = {"http": "144.217.162.239:3128"}
     if args.check_server_os:
-        wrapper.add_module(GetServerVersionModule())
+        wrapper.add_module(GetServerVersionModule(proxies=proxy))
     if args.update_content:
-        wrapper.add_module(OtherHttpMethodModule(path_to_link_dict=dict_path))
+        wrapper.add_module(OtherHttpMethodModule(path_to_link_dict=dict_path,
+                                                 proxies=proxy))
     if args.bot:
         wrapper.add_module(BotRecognitionModule())
     if args.perform_dos:
         wrapper.add_module(SlowlorisModule())
     if args.perform_brute:
-        wrapper.add_module(ForceAttackModule())
+        wrapper.add_module(ForceAttackModule(proxies=proxy))
     if args.find_hidden_files:
-        wrapper.add_module(DictAttackModule(dict_name=dict_path))
+        wrapper.add_module(DictAttackModule(dict_name=dict_path, proxies=proxy))
     if args.permission_check:
         wrapper.add_module(PermissionCheck(args.server))
     if args.osw_server_checking:

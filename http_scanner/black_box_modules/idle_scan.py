@@ -6,13 +6,24 @@ from scapy.layers.inet import IP, TCP
 
 
 class BotRecognitionModule(object):
-
-    def __init__(self):#192.168.0.59
+    """
+    Module implements idle scan.
+    """
+    def __init__(self):
+        """
+        Constructor of the class.
+        """
         self.result = {}
         self.id_mod = 'bot'
 
     def idle_scan(self, zombie, target, port):
-
+        """
+        Method implements idle scan.
+        :param zombie: Zombie server.
+        :param target: Target server
+        :param port: Port
+        :return:
+        """
         #print '[*] Scan %s port %d using %s as zombie' % (target, port, zombie)
 
         #pozyskanie IP ID z Bota
@@ -38,6 +49,12 @@ class BotRecognitionModule(object):
             return True
 
     def simple_scan(self, target, port):
+        """
+        Simple scanning.
+        :param target: Target server.
+        :param port: Port
+        :return: True if server response else False.
+        """
         s = socket.socket(2, 1)
         try:
             s.connect(target, port)
@@ -48,7 +65,11 @@ class BotRecognitionModule(object):
             return False
 
     def scan(self, data):
-
+        """
+        Scanning method.
+        :param data: Data in format: ip_target:port:ip_zombie
+        :return: None.
+        """
         ip = data[0]
         ip_bot = data[2]
         port = data[1]
@@ -63,7 +84,15 @@ class BotRecognitionModule(object):
             self.result = "Can't tell if IP of zombie host is filtered"
 
     def get_result(self):
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
         return self.result
 
     def get_id(self):
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
         return self.id_mod

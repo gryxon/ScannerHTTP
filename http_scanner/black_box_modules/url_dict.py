@@ -2,13 +2,26 @@ import requests
 
 
 class DictAttackModule(object):
+    """
+    Module finds links on the website. It uses file with dictionary.
+    """
     def __init__(self, dict_name="dict_name", proxies=None):
+        """
+        Constructor of the class.
+        :param dict_name: Path to dict.
+        :param proxies: Proxy information.
+        """
         self._result = {}
         self._id_mod = "f"
         self._proxies = proxies
         self._dict_name = dict_name
 
     def scan(self, main_url):
+        """
+        Scanning method.
+        :param main_url: Main url of the scanned website.
+        :return:
+        """
         headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'}
         r = requests.get(main_url + '/robots.txt', headers=headers, proxies=self._proxies)
         robots_urls = False
@@ -40,7 +53,15 @@ class DictAttackModule(object):
                 line = url_dict.readline()
 
     def get_id(self):
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
         return self._id_mod
 
     def get_result(self):
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
         return self._result

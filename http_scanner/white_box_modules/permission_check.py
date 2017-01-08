@@ -2,7 +2,14 @@ import os
 
 
 class PermissionCheck(object):
+    """
+    Module checks permission of conf files.
+    """
     def __init__(self, server):
+        """
+        Constructor of the class.
+        :param server: nginx, apache2 or windows string.
+        """
         self.result = {}
         self.id_mod = 'permission'
         if server == 'windows':
@@ -10,16 +17,28 @@ class PermissionCheck(object):
         else:
             self.paths = ['/etc/' + server + '/' + server + '.conf', '/etc/' + server + '/sites-available/']
 
-
     def scan(self):
+        """
+        Scanning Method
+        :return: None.
+        """
 
         for p in self.paths:
             self.check_permission(p)
 
     def get_id(self):
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
         return self.id_mod
 
     def check_permission(self, path):
+        """
+        Method implements checking file permission.
+        :param path: Path to conf files.
+        :return:
+        """
         if os.path.isfile(path):
             st = os.stat(path)
             # print oct(st.st_mode)[-3:][2]
@@ -35,4 +54,8 @@ class PermissionCheck(object):
             self.result[path] = "No such file or folder"
 
     def get_result(self):
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
         return self.result

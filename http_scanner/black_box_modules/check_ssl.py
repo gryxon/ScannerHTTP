@@ -2,12 +2,22 @@ import requests
 
 
 class CheckSsl(object):
-
+    """
+        Module which check cert ssl
+    """
     def __init__(self):
+        """
+        Constructor of class
+        """
         self._id_mod = 'https'
         self._result = {}
 
     def scan(self, main_url):
+        """
+        Scanning Method.
+        :param main_url: Main url of scanned website.
+        :return: None.
+        """
         if main_url.startswith('http://'):
             ssl_url = main_url.replace('http://', 'https://')
         elif not main_url.startswith('https://'):
@@ -24,9 +34,17 @@ class CheckSsl(object):
                 self._result['ssl validation'] = 'no ssl certificate or ssl protocol error'
 
     def get_id(self):
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
         return self._id_mod
 
     def get_result(self):
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
         return self._result
 
 if __name__ == '__main__':

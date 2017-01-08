@@ -1,6 +1,10 @@
 class ConfErrors(object):
 
     def __init__(self, conf_path):
+        """
+        Constructor of the class.
+        :param conf_path: Path to conf file.
+        """
         self.a = ""
         self.b = 0
         self.in_tag = False
@@ -10,6 +14,10 @@ class ConfErrors(object):
         self._conf_path = conf_path
 
     def scan(self):
+        """
+        Scanning method.
+        :return: None.
+        """
         f = open(self._conf_path, 'r')
         for line in f.readlines():
             if self.b%2 == 0:
@@ -43,7 +51,15 @@ class ConfErrors(object):
                 self.result = "Configuration seems fine"
 
     def get_id(self):
+        """
+        Method which returns id of the module
+        :return: Id of module
+        """
         return self.id_mod
 
     def get_result(self):
+        """
+        Method which returns id of the Module
+        :return: Dict with results.
+        """
         return self.result
