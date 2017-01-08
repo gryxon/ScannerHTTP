@@ -26,6 +26,7 @@ class GetServerVersionModule(object):
         """
         r = requests.head(main_url, proxies=self._proxies)
         self._result["server"] = r.headers.get("Server")
+        self._result["recomendation"] = "Version of OS and HTTP server should be up to date! Check it!"
 
     def get_id(self):
         """

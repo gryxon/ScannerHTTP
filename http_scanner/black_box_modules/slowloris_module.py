@@ -66,8 +66,10 @@ class SlowlorisModule(object):
                              timeout=5.000)
         except:
             self._result["dos_result"] = "Attack was successful!"
+            self._result["recomendation"] = "You should change server or config files to fixed it!"
         if "dos_result" not in self._result.keys():
             self._result["dos_result"] = "Attack failed!"
+            self._result["recomendation"] = "Everything is alright!"
 
     def get_id(self):
         """

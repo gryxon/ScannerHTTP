@@ -39,6 +39,7 @@ class OtherHttpMethodModule(object):
         """
         with open(self._path_dict) as url_dict:
             lines = url_dict.readlines()
+            flag_good = True
             for line in lines:
                 put_r = requests.put(main_url + line[:-1], data = {},
                                      proxies=self._proxies)
@@ -52,7 +53,12 @@ class OtherHttpMethodModule(object):
 
                 for req in req_arr:
                     if req[0].status_code == 200:
+                        flag_good = False
                         self.create_response_array(req, main_url + line[:-1])
+                if not flag_good:
+                    self._result["recomendation"] = "Method like PUT or DELETE should be available only for authorized users!"
+                else:
+                    self._result["recomendation"] = "Everything is alright!"
 
     def get_id(self):
         """
