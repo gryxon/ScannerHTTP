@@ -20,6 +20,7 @@ class OsRecognitionModule(object):
         """
         self._result["os-name"] = platform.system()
         self._result["os-version"] = platform.release()
+        self._result["recomendation"] = "Version of OS and HTTP server should be up to date! Check it!"
 
     def get_id(self):
         """
@@ -36,8 +37,3 @@ class OsRecognitionModule(object):
         :return: Dict with results.
         """
         return self._result
-
-if __name__ == "__main__":
-    m = OsRecognitionModule()
-    m.scan()
-    print(m.get_result())

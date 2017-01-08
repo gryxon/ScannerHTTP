@@ -26,6 +26,7 @@ class GetServerVersionModule(object):
         """
         r = requests.head(main_url, proxies=self._proxies)
         self._result["server"] = r.headers.get("Server")
+        self._result["recomendation"] = "Version of OS and HTTP server should be up to date! Check it!"
 
     def get_id(self):
         """
@@ -43,7 +44,3 @@ class GetServerVersionModule(object):
         """
         return self._result
 
-if __name__ == "__main__":
-    module = GetServerVersionModule()
-    module.scan("http://www.wp.pl/")
-    print(module.get_result()["server"])

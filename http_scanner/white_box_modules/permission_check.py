@@ -28,6 +28,7 @@ class PermissionCheck(object):
         for p in self.paths:
             self.check_permission(p)
 
+
     def get_id(self):
         """
         Method which returns id of the module
