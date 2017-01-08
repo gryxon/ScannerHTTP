@@ -38,7 +38,7 @@ class SlowlorisModule(object):
         :param ip_address: Ip address of server.
         :param port: Port of server.
         :param q: Message queue between process
-        :return:
+        :return: None
         """
         array_s = list(map(lambda x: socket.socket(socket.AF_INET,
                                                    socket.SOCK_STREAM),
@@ -64,6 +64,7 @@ class SlowlorisModule(object):
     def scan(self, data):
         """
         Scanning method.
+
         :param data: Ip and port of server. Format: xxx.xxx.xxx.xxx:aaaa
         :return: None.
         """
@@ -86,6 +87,7 @@ class SlowlorisModule(object):
     def get_id(self):
         """
         Method which returns id of the module
+
         :return: Id of module
         """
         return self._id_mod
@@ -93,6 +95,7 @@ class SlowlorisModule(object):
     def get_result(self):
         """
         Method which returns id of the Module
+
         :return: Dict with results.
         """
         return self._result
