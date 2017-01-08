@@ -47,8 +47,3 @@ class CheckSsl(object):
         :return: Dict with results.
         """
         return self._result
-
-if __name__ == '__main__':
-    cs = CheckSsl()
-    cs.scan('137.74.193.103:8080')
-    print cs.get_result()

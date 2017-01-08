@@ -43,7 +43,3 @@ class GetServerVersionModule(object):
         """
         return self._result
 
-if __name__ == "__main__":
-    module = GetServerVersionModule()
-    module.scan("http://www.wp.pl/")
-    print(module.get_result()["server"])
